@@ -17,3 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('concerts',                        [\App\Http\Controllers\ConcertController::class, 'store'])->name('api.concerts.store');
+Route::post('concerts/{concert}/bands/{band}',       [\App\Http\Controllers\ConcertBandsController::class, 'store'])->name('api.concerts.bands.store');
+Route::post('concerts/{concert}/advertisers/{advertiser}', [\App\Http\Controllers\ConcertAdvertisersController::class, 'store'])->name('api.concerts.advertisers.store');
